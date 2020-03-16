@@ -23,7 +23,7 @@ li {
 }
 
 ul li img {
-  margin-right: 3px;
+  margin-right: 5px;
   width: 20px;
 }
 
@@ -31,4 +31,11 @@ ul li a {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  color: #5F5F5F;
+  text-decoration: none;
+}
+
+ul li a:hover {
+  color: rgb(106, 201, 245);
+  text-decoration: underline;
 }
