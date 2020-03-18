@@ -14,6 +14,10 @@ chrome.tabs.query({ currentWindow: true }, function(tabs) {
     a.target = '_blank'
     a.text = tab.title
 
+    if (tab.highlighted) {
+      li.style.backgroundColor = '#e6fffa'
+    }
+
     ul.appendChild(li)
     li.appendChild(favicon)
     li.appendChild(a)
