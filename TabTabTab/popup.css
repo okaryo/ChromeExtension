@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   max-height: 150px;
   width: 300px;
@@ -16,26 +20,46 @@ ul {
 
 li {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   list-style: none;
   margin: 0 0 3px;
   padding: 0;
 }
 
-ul li img {
-  margin-right: 5px;
-  width: 20px;
-}
-
 ul li a {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
   color: #5F5F5F;
   text-decoration: none;
 }
 
 ul li a:hover {
-  color: rgb(106, 201, 245);
+  opacity: 0.6;
+  color: rgb(88, 195, 245);
   text-decoration: underline;
+}
+
+ul li a img {
+  margin-right: 5px;
+  width: 20px;
+}
+
+ul li a p {
+  width: 260px;
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+ul li i {
+  padding: 3.375px 5px;
+  border-radius: 50%;
+}
+
+ul li i:hover {
+  opacity: 0.6;
+  background-color: rgb(106, 201, 245);
+  cursor: pointer;
 }
