@@ -5,7 +5,7 @@
   "description": "easily play Flexbox",
 
   "browser_action": {
-    "default_title": "FlexDemo",
+    "default_title": "FlexPropertiesDemo",
     "default_popup": "popup.html"
   },
   "permissions": [],

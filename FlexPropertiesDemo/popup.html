@@ -7,8 +7,8 @@
   </head>
 
   <body>
-    <h2>FlexPropertiesDemo</h2>
-    <div class="operation-container">
+    <h2>Flex Properties Demo</h2>
+    <div class="flex-property-operation-container">
       <div>
         <h4>flex-direction</h4>
         <div class="property-value-container">
@@ -104,8 +104,13 @@
         </div>
       </div>
     </div>
-    <button id="add-child-button">Add Child</button>
-    <button id="remove-child-button">Remove Child</button>
+
+    <div class="child-operation-container">
+      <button id="add-child-button">Add Child</button>
+      <button id="remove-child-button">Remove Child</button>
+      <p id="child-width-text">child width:<i id="child-width-value">12</i>%</p>
+      <input id="child-width-range" type="range" min="0" max="100" step="1" value="12">
+    </div>
     <div id="flex-parent">
       <div class="flex-children">1</div>
       <div class="flex-children">2</div>

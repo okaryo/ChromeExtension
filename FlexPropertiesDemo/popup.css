@@ -3,13 +3,15 @@
 }
 
 body {
-  height: 300px;
   width: 500px;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 h2 {
-  margin: 0 0 8px;
+  margin: 0;
+  padding-bottom: 5px;
   text-align: center;
+  border-bottom: 1px solid #F0F0F0;
 }
 
 h4 {
@@ -17,19 +19,27 @@ h4 {
 }
 
 #flex-parent {
-  height: 100px;
-  border: 1px solid #5F5F5F;
   display: flex;
+  min-height: 100px;
+  max-height: 300px;
+  width: 100%;
+  border: 1px solid #5F5F5F;
   padding: 1px;
+  margin-bottom: 5px;
+  overflow: hidden;
+  background-color: #c5e0c8;
+  opacity: 0.6;
 }
 
 .flex-children {
   border: 1px solid #5F5F5F;
   width: 12%;
   margin: 1px;
+  overflow: hidden;
+  background-color: #FFFFFF;
 }
 
-.operation-container {
+.flex-property-operation-container {
   display: flex;
   justify-content: space-between;
 }
@@ -37,4 +47,74 @@ h4 {
 .property-value-container {
   display: flex;
   flex-direction: column;
+}
+
+.property-value-container > label > input:focus {
+  background-color: #B54A4A;
+}
+
+.child-operation-container {
+  display: flex;
+  align-items: center;
+}
+
+.child-operation-container > * + * {
+  margin-left: 3px;
+}
+
+#add-child-button {
+  padding: 2px 5px;
+  color: #F2F2F2;
+  background-color: #1bb92b;
+  border: 1px solid #1bb92b;
+  border-radius: 3px;
+  outline: none;
+}
+#add-child-button:active {
+  opacity: 0.6;
+}
+
+#remove-child-button {
+  padding: 2px 5px;
+  background-color: #ffb923;
+  border: 1px solid #ffb923;
+  border-radius: 3px;
+  outline: none;
+}
+#remove-child-button:active {
+  opacity: 0.6;
+  
+}
+
+#child-width-value {
+  display: inline-block;
+  width: 18px;
+  margin-right: 2px;
+  text-align: right;
+}
+
+#child-width-range {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #bde0c1;
+  opacity: 0.7;
+  height: 2px;
+  width: 150px;
+  border-radius: 6px;
+}
+#child-width-range:focus,
+#child-width-range:active {
+  outline: none;
+}
+#child-width-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  display: block;
+  background-color: #07be19;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
 }
