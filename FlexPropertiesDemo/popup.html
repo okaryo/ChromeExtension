@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>FlexPropertiesDemo</title>
+    <link rel="stylesheet" href="popup.css" type="text/css">
+  </head>
+
+  <body>
+    <h2>FlexPropertiesDemo</h2>
+    <div class="operation-container">
+      <div>
+        <h4>flex-direction</h4>
+        <div class="property-value-container">
+          <label>
+            <input class="flex-direction" type="radio" name="flex-direction" value="row"  checked="true">row
+          </label>
+          <label>
+            <input class="flex-direction" type="radio" name="flex-direction" value="row-reverse">row-reverse
+          </label>
+          <label>
+            <input class="flex-direction" type="radio" name="flex-direction" value="column">column
+          </label>
+          <label>
+            <input class="flex-direction" type="radio" name="flex-direction" value="column-reverse">column-reverse
+          </label>
+        </div>
+      </div>
+      <div>
+        <h4>flex-wrap</h4>
+        <div class="property-value-container">
+          <label>
+            <input class="flex-wrap" type="radio" name="flex-wrap" value="nowrap"  checked="true">nowrap
+          </label>
+          <label>
+            <input class="flex-wrap" type="radio" name="flex-wrap" value="wrap">wrap
+          </label>
+          <label>
+            <input class="flex-wrap" type="radio" name="flex-wrap" value="wrap-reverse">wrap-reverse
+          </label>
+        </div>
+      </div>
+      <div>
+        <h4>justify-content</h4>
+        <div class="property-value-container">
+          <label>
+            <input class="justify-content" type="radio" name="justify-content" value="flex-start" checked="true">flex-start
+          </label>
+          <label>
+            <input class="justify-content" type="radio" name="justify-content" value="flex-end">flex-end
+          </label>
+          <label>
+            <input class="justify-content" type="radio" name="justify-content" value="center">center
+          </label>
+          <label>
+            <input class="justify-content" type="radio" name="justify-content" value="space-between">space-between
+          </label>
+          <label>
+            <input class="justify-content" type="radio" name="justify-content" value="space-around">space-around
+          </label>
+        </div>
+      </div>
+      <div>
+        <h4>align-items</h4>
+        <div class="property-value-container">
+          <label>
+            <input class="align-items" type="radio" name="align-items" value="stretch"  checked="true">stretch
+          </label>
+          <label>
+            <input class="align-items" type="radio" name="align-items" value="flex-start">flex-start
+          </label>
+          <label>
+            <input class="align-items" type="radio" name="align-items" value="flex-end">flex-end
+          </label>
+          <label>
+            <input class="align-items" type="radio" name="align-items" value="center">center
+          </label>
+          <label>
+            <input class="align-items" type="radio" name="align-items" value="baseline">baseline
+          </label>
+        </div>
+      </div>
+      <div>
+        <h4>align-content</h4>
+        <div class="property-value-container">
+          <label>
+            <input class="align-content" type="radio" name="align-content" value="stretch"  checked="true">stretch
+          </label>
+          <label>
+            <input class="align-content" type="radio" name="align-content" value="flex-start">flex-start
+          </label>
+          <label>
+            <input class="align-content" type="radio" name="align-content" value="flex-end">flex-end
+          </label>
+          <label>
+            <input class="align-content" type="radio" name="align-content" value="center">center
+          </label>
+          <label>
+            <input class="align-content" type="radio" name="align-content" value="space-between">space-between
+          </label>
+          <label>
+            <input class="align-content" type="radio" name="align-content" value="space-around">space-around
+          </label>
+        </div>
+      </div>
+    </div>
+    <button id="add-child-button">Add Child</button>
+    <button id="remove-child-button">Remove Child</button>
+    <div id="flex-parent">
+      <div class="flex-children">1</div>
+      <div class="flex-children">2</div>
+      <div class="flex-children">3</div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>

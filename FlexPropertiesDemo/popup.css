@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 300px;
+  width: 500px;
+}
+
+h2 {
+  margin: 0 0 8px;
+  text-align: center;
+}
+
+h4 {
+  margin: 5px 0 3px;
+}
+
+#flex-parent {
+  height: 100px;
+  border: 1px solid #5F5F5F;
+  display: flex;
+  padding: 1px;
+}
+
+.flex-children {
+  border: 1px solid #5F5F5F;
+  width: 12%;
+  margin: 1px;
+}
+
+.operation-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.property-value-container {
+  display: flex;
+  flex-direction: column;
+}

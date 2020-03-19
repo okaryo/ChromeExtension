@@ -1,0 +1,13 @@
+{
+  "manifest_version": 2,
+  "name": "FlexPropertiesDemo",
+  "version": "1.0.0",
+  "description": "easily play Flexbox",
+
+  "browser_action": {
+    "default_title": "FlexDemo",
+    "default_popup": "popup.html"
+  },
+  "permissions": [],
+  "icons": {}
+}
