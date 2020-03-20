@@ -49,8 +49,8 @@ h4 {
   flex-direction: column;
 }
 
-.property-value-container > label > input:focus {
-  background-color: #B54A4A;
+.property-value_box {
+  margin-bottom: 5px;
 }
 
 .child-operation-container {

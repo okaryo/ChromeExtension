@@ -6,8 +6,19 @@
 
   "browser_action": {
     "default_title": "FlexPropertiesDemo",
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/flex_properties_demo_16.png",
+      "32": "images/flex_properties_demo_32.png",
+      "48": "images/flex_properties_demo_48.png",
+      "128": "images/flex_properties_demo_128.png"
+    }
   },
   "permissions": [],
-  "icons": {}
+  "icons": {
+    "16": "images/flex_properties_demo_16.png",
+    "32": "images/flex_properties_demo_32.png",
+    "48": "images/flex_properties_demo_48.png",
+    "128": "images/flex_properties_demo_128.png"
+  }
 }
