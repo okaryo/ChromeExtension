@@ -40,7 +40,18 @@ chrome.tabs.query({ currentWindow: true }, function(tabs) {
 })
 
 chrome.tabs.query({ currentWindow: false }, function(tabs) {
-  let ul = document.getElementById('other-window_tab-list')
+  if (tabs.length === 0) return
+
+  let currentWindowHeader = document.createElement('h3')
+  currentWindowHeader.innerHTML = 'Current Window'
+  let currentWindowTabList = document.getElementById('current-window_tab-list')
+  currentWindowTabList.parentNode.insertBefore(currentWindowHeader, currentWindowTabList)
+
+  let body = document.getElementsByTagName('body')[0]
+  let otherWindowHeader = document.createElement('h3')
+  otherWindowHeader.innerHTML = 'Other Window'
+
+  let ul = document.createElement('ul')
   for (let tab of tabs) {
     let li = document.createElement('li')
 
@@ -74,4 +85,7 @@ chrome.tabs.query({ currentWindow: false }, function(tabs) {
     a.appendChild(favicon)
     a.appendChild(p)
   }
+
+  body.appendChild(otherWindowHeader)
+  body.appendChild(ul)
 })
