@@ -1,0 +1,30 @@
+{
+  "manifest_version": 2,
+  "name": "NewTabLinkGitHub",
+  "version": "1.0.0",
+  "description": "chrome extension to open new tab when you click external link at github",
+
+  "browser_action": {
+    "default_title": "NewTabLinkGitHub",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/new_tab_link_github_16.png",
+      "32": "images/new_tab_link_github_32.png",
+      "48": "images/new_tab_link_github_48.png",
+      "128": "images/new_tab_link_github_128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*"],
+      "js": ["js/content_scripts.js"]
+    }
+  ],
+  "permissions": ["tabs"],
+  "icons": {
+    "16": "images/new_tab_link_github_16.png",
+    "32": "images/new_tab_link_github_32.png",
+    "48": "images/new_tab_link_github_48.png",
+    "128": "images/new_tab_link_github_128.png"
+  }
+}
