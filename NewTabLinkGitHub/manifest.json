@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "NewTabLinkGitHub",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "chrome extension to open new tab when you click external link at github",
 
   "browser_action": {
