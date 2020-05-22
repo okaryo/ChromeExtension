@@ -1,12 +1,12 @@
 body {
-  width: 280px;
+  width: 380px;
   padding: 5px;
   display: flex;
   flex-direction: column;
   font-size: 16px;
   color: #555555;
 }
-h3 {
+h4 {
   margin: 0;
   padding-bottom: 2px;
   border-bottom: 1px solid #AAAAAA;
