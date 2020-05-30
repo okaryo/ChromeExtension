@@ -1,0 +1,32 @@
+{
+  "manifest_version": 2,
+  "name": "AtCoderLanguageCleaner",
+  "version": "1.0.0",
+  "description": "chrome extension to clean up language options at AtCoder website",
+
+  "browser_action": {
+    "default_title": "AtCoderLanguageCleaner",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/atcoder_language_cleaner_16.png",
+      "32": "images/atcoder_language_cleaner_32.png",
+      "48": "images/atcoder_language_cleaner_48.png",
+      "128": "images/atcoder_language_cleaner_128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://atcoder.jp/*"],
+      "js": ["js/content_scripts.js"]
+    }
+  ],
+  "permissions": [
+    "storage"
+  ],
+  "icons": {
+    "16": "images/atcoder_language_cleaner_16.png",
+    "32": "images/atcoder_language_cleaner_32.png",
+    "48": "images/atcoder_language_cleaner_48.png",
+    "128": "images/atcoder_language_cleaner_128.png"
+  }
+}
