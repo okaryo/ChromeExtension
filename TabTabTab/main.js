@@ -1,27 +1,56 @@
-chrome.tabs.query({ currentWindow: true }, function(tabs) {
-  let ul = document.getElementById('current-window_tab-list')
-  for (let tab of tabs) {
-    let li = document.createElement('li')
+chrome.tabs.query({ currentWindow: true }, (tabs) => {
+  const ul = document.getElementById('current-window_tab-list')
+  setTimeout(createTabListAtCurrentWindow(tabs, ul), 0)
+})
 
-    let a = document.createElement('a')
-    a.href = tab.url
+chrome.tabs.query({ currentWindow: false }, (tabs) => {
+  if (tabs.length === 0) return
+
+  setTimeout(() => {
+    const currentWindowHeader = document.createElement('h3')
+    currentWindowHeader.innerHTML = 'Current Window'
+    const currentWindowTabList = document.getElementById('current-window_tab-list')
+    currentWindowTabList.parentNode.insertBefore(currentWindowHeader, currentWindowTabList)
+
+    const windowIds = new Set()
+    for (let tab of tabs) {
+      windowIds.add(tab.windowId)
+    }
+
+    let windowNumber = 1
+    for (let windowId of windowIds) {
+      createTabListAtOtherWindow(windowNumber, windowId)
+      windowNumber ++
+    }
+  }, 50)
+})
+
+const createTabListAtCurrentWindow = (tabs, ul) => {
+  for (let tab of tabs) {
+    const li = document.createElement('li')
+
+    const a = document.createElement('a')
     a.addEventListener('click', () => {
       chrome.windows.update(tab.windowId, { focused: true })
       chrome.tabs.update(tab.id, { active: true })
     })
     
-    let favicon = document.createElement('img')
+    const favicon = document.createElement('img')
     favicon.src = tab.favIconUrl
     if (tab.favIconUrl === '' || tab.favIconUrl === undefined) {
       favicon.src = 'images/tabtabtab128.png'
     }
 
-    let p = document.createElement('p')
-    p.innerHTML = tab.title
+    const p = document.createElement('p')
+    if (tab.pinned) {
+      p.innerHTML = `<i class="fas fa-thumbtack" style="margin-right:3px;"></i>${tab.title}`
+    } else {
+      p.innerHTML = tab.title
+    }
+    
 
-    let closeIcon = document.createElement('i')
-    closeIcon.classList.add('fas')
-    closeIcon.classList.add('fa-times')
+    const closeIcon = document.createElement('span')
+    closeIcon.innerHTML = '&times;'
     closeIcon.addEventListener('click', () => {
       chrome.tabs.remove(tab.id)
       li.remove()
@@ -37,55 +66,54 @@ chrome.tabs.query({ currentWindow: true }, function(tabs) {
     a.appendChild(favicon)
     a.appendChild(p)
   }
-})
+}
 
-chrome.tabs.query({ currentWindow: false }, function(tabs) {
-  if (tabs.length === 0) return
+const createTabListAtOtherWindow = (windowNumber, windowId) => {
+  const body = document.getElementsByTagName('body')[0]
+  const otherWindowHeader = document.createElement('h3')
+  otherWindowHeader.innerHTML = `Other Window${windowNumber}`
 
-  let currentWindowHeader = document.createElement('h3')
-  currentWindowHeader.innerHTML = 'Current Window'
-  let currentWindowTabList = document.getElementById('current-window_tab-list')
-  currentWindowTabList.parentNode.insertBefore(currentWindowHeader, currentWindowTabList)
+  const ul = document.createElement('ul')
 
-  let body = document.getElementsByTagName('body')[0]
-  let otherWindowHeader = document.createElement('h3')
-  otherWindowHeader.innerHTML = 'Other Window'
-
-  let ul = document.createElement('ul')
-  for (let tab of tabs) {
-    let li = document.createElement('li')
-
-    let a = document.createElement('a')
-    a.href = tab.url
-    a.addEventListener('click', () => {
-      chrome.windows.update(tab.windowId, { focused: true })
-      chrome.tabs.update(tab.id, { active: true })
-    })
-    
-    let favicon = document.createElement('img')
-    favicon.src = tab.favIconUrl
-    if (tab.favIconUrl === '' || tab.favIconUrl === undefined) {
-      favicon.src = 'images/tabtabtab128.png'
+  chrome.tabs.query({ windowId: windowId }, (tabs) => {
+    for (let tab of tabs) {
+      const li = document.createElement('li')
+  
+      const a = document.createElement('a')
+      a.addEventListener('click', () => {
+        chrome.windows.update(tab.windowId, { focused: true })
+        chrome.tabs.update(tab.id, { active: true })
+      })
+      
+      const favicon = document.createElement('img')
+      favicon.src = tab.favIconUrl
+      if (tab.favIconUrl === '' || tab.favIconUrl === undefined) {
+        favicon.src = 'images/tabtabtab128.png'
+      }
+  
+      const p = document.createElement('p')
+      if (tab.pinned) {
+        p.innerHTML = `<i class="fas fa-thumbtack" style="margin-right:3px;"></i>${tab.title}`
+      } else {
+        p.innerHTML = tab.title
+      }
+      
+  
+      const closeIcon = document.createElement('span')
+      closeIcon.innerHTML = '&times;'
+      closeIcon.addEventListener('click', () => {
+        chrome.tabs.remove(tab.id)
+        li.remove()
+      })
+  
+      ul.appendChild(li)
+      li.appendChild(a)
+      li.appendChild(closeIcon)
+      a.appendChild(favicon)
+      a.appendChild(p)
     }
-
-    let p = document.createElement('p')
-    p.innerHTML = tab.title
-
-    let closeIcon = document.createElement('i')
-    closeIcon.classList.add('fas')
-    closeIcon.classList.add('fa-times')
-    closeIcon.addEventListener('click', () => {
-      chrome.tabs.remove(tab.id)
-      li.remove()
-    })
-
-    ul.appendChild(li)
-    li.appendChild(a)
-    li.appendChild(closeIcon)
-    a.appendChild(favicon)
-    a.appendChild(p)
-  }
+  })
 
   body.appendChild(otherWindowHeader)
   body.appendChild(ul)
-})
+}
